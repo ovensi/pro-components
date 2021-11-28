@@ -109,6 +109,10 @@ ProForm 是基于 antd Form 的可降级封装，与 antd 功能完全对齐，�
 
 <code src="./demos/sync-to-url.tsx" height="376px" title="同步提交结果到 url" />
 
+### 金额
+
+<code src="./demos/money.tsx" height="248px" title="金额" />
+
 ### 固定页脚
 
 <code src="./demos/layout-base.tsx" iframe="764px" title="固定页脚" />
@@ -118,6 +122,8 @@ ProForm 是基于 antd Form 的可降级封装，与 antd 功能完全对齐，�
 <code src="./demos/pro-form-editableTable.tsx" heigh="1774px" title="ProForm 和 EditableTable 同时使用"/>
 
 <code src="./demos/linkage-customization.tsx" heigh="1774px" debug/>
+
+<code src="./demos/pro-form-dependency.debug.tsx" height="548px" title="formRef的使用" debug />
 
 ## ProForm
 
@@ -136,6 +142,8 @@ ProForm 是 antd Form 的再封装，如果你想要自定义表单元素，ProF
 | omitNil | ProForm 会自动清空 null 和 undefined 的数数据，如果你约定了 nil 代表某种数据，可以设置为 false 关闭此功能 | `boolean` | true |
 | params | 发起网络请求的参数,与 request 配合使用 | `Record` | - |
 | request | 发起网络请求的参数,返回值会覆盖给 initialValues | `(params)=>Promise<data>` | - |
+| isKeyPressSubmit | 是否使用回车提交 | `boolean` | - |
+| autoFocusFirstInput | 自动 focus 表单第一个输入框 | `boolean` | - |
 | [(...)](https://ant.design/components/form-cn/) | 注意 `LightFilter` 和 `QueryFilter` 仅支持除 `wrapperCol` \| `labelCol` \| `layout` 外的其他 antd `Form` 组件参数 | - | - |
 
 ### ProForm.Group
@@ -192,3 +200,47 @@ ProForm 是 antd Form 的再封装，如果你想要自定义表单元素，ProF
   }}
 />
 ```
+
+### formRef
+
+该属性是 ProForm 在原有的 Antd 的 `FormInstance` 的基础上做的一个上层分装，增加了一些更加便捷的方法。使用方式如下：
+
+<code src="./demos/formRef.tsx" height="548px" title="formRef的使用" />
+
+```tsx | pure
+const App = () => {
+  // 绑定一个 ProFormInstance 实例
+  const formRef = useRef<
+    ProFormInstance<{
+      date: string;
+    }>
+  >();
+
+  return (
+    <ProForm
+      onValuesChange={async () => {
+        formRef.current?.validateFieldsReturnFormatValue?.().then((val) => {
+          // 以下为格式化之后的表单值
+          console.log(val.date);
+        });
+      }}
+      // 通过formRef进行绑定
+      formRef={formRef}
+    >
+      <ProFormDatePicker
+        name="date"
+        initialValue={moment('2021-08-09')}
+        fieldProps={{ open: true }}
+      />
+    </ProForm>
+  );
+};
+```
+
+`ProFormInstance`在原先`FormInstance`的基础上增加了如下方法：
+
+| 方法名 | 使用描述 | 备注 |
+| :-: | :-: | :-: |
+| `getFieldsFormatValue` | 使用方法与`FormInstance`的`getFieldsValue`方法相同，将返回格式化后的所有数据 |  |
+| `getFieldFormatValue` | 使用方法与`FormInstance`的`getFieldValue`方法相同，将返回格式化后的指定数据 |  |
+| `validateFieldsReturnFormatValue` | 使用方法与`FormInstance`的`validateFields`方法相同，验证通过后将返回格式化后的所有数据 |  |

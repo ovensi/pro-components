@@ -9,6 +9,55 @@ group:
 
 # Change Log
 
+## @ant-design/pro-table@2.56.3
+
+`2021-10-19`
+
+- 🐛 fix(table): header support ellipsis [#3855](https://github.com/ant-design/pro-components/pull/3855) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.56.1
+
+`2021-10-15`
+
+- 🐛 fix(table): column 配置不写 key，使用 request 方法出现错误 [#3816](https://github.com/ant-design/pro-components/pull/3816) [@gexin1](https://github.com/gexin1)
+
+## @ant-design/pro-table@2.56.0
+
+`2021-10-12`
+
+- 🐛 fix(table): EditTable field change callback [#3811](https://github.com/ant-design/pro-components/pull/3811) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-table@2.55.0
+
+`2021-10-08`
+
+- ✨ feat(table): action text [#3788](https://github.com/ant-design/pro-components/pull/3788) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-table@2.54.3
+
+`2021-09-24`
+
+- 🐛 fix(table): optimize style performance [#3706](https://github.com/ant-design/pro-components/pull/3706) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix DragSortTable render problems with multiple renders [#3705](https://github.com/ant-design/pro-components/pull/3705) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.54.1
+
+`2021-09-18`
+
+- 🐛 fix(table): use new merge funtion [#3696](https://github.com/ant-design/pro-components/pull/3696) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.54.0
+
+`2021-09-17`
+
+- 💥 feat(table): support persistence stateMap [#3684](https://github.com/ant-design/pro-components/pull/3684) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.53.0
+
+`2021-09-09`
+
+- 💥 feat(table): fix table empty style error [#3552](https://github.com/ant-design/pro-components/pull/3552) [@super20155](https://github.com/super20155)
+
 ## @ant-design/pro-table@2.51.0
 
 `2021-08-30`

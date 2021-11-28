@@ -1,5 +1,5 @@
 ﻿import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { ProFormProps, QueryFilterProps } from '@ant-design/pro-form';
+import type { LightWrapperProps, ProFormProps, QueryFilterProps } from '@ant-design/pro-form';
 import type { ParamsType } from '@ant-design/pro-provider';
 import type {
   ProCoreActionType,
@@ -23,7 +23,7 @@ import type { ColumnsState, useContainer } from './container';
 import type { SearchConfig, TableFormItem } from './components/Form/FormRender';
 import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
 import type { SizeType } from 'antd/lib/config-provider/SizeContext';
-import { NamePath } from 'antd/lib/form/interface';
+import type { NamePath } from 'antd/lib/form/interface';
 
 export type PageInfo = {
   pageSize: number;
@@ -136,7 +136,10 @@ export type ProColumnType<T = unknown, ValueType = 'text'> = ProSchema<
     listKey?: string;
   },
   ProSchemaComponentTypes,
-  ValueType
+  ValueType,
+  {
+    lightProps?: LightWrapperProps;
+  }
 >;
 
 export type ProColumnGroupType<RecordType, ValueType> = {
@@ -156,6 +159,23 @@ export type Bordered =
       table?: boolean;
     };
 
+export type ColumnsStateType = {
+  /**
+   * 持久化的类型，支持 localStorage 和 sessionStorage
+   *
+   * @param localStorage 设置在关闭浏览器后也是存在的
+   * @param sessionStorage 关闭浏览器后会丢失
+   */
+  persistenceType?: 'localStorage' | 'sessionStorage';
+  /** 持久化的key，用于存储到 storage 中 */
+  persistenceKey?: string;
+  /** ColumnsState 的值，columnsStateMap将会废弃 */
+  defaultValue?: Record<string, ColumnsState>;
+  /** ColumnsState 的值，columnsStateMap将会废弃 */
+  value?: Record<string, ColumnsState>;
+  onChange?: (map: Record<string, ColumnsState>) => void;
+};
+
 /** ProTable 的类型定义 继承自 antd 的 Table */
 export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
   columns?: ProColumns<T, ValueType>[];
@@ -164,9 +184,21 @@ export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
 
   params?: U;
 
+  /**
+   * 列状态配置，可以配置是否浮动和是否展示
+   *
+   * @deprecated 请使用 columnsState.value 代替
+   */
   columnsStateMap?: Record<string, ColumnsState>;
-
+  /**
+   * 列状态配置修改触发事件
+   *
+   * @deprecated 请使用 columnsState.onChange 代替
+   */
   onColumnsStateChange?: (map: Record<string, ColumnsState>) => void;
+
+  /** 列状态的配置，可以用来操作列功能 */
+  columnsState?: ColumnsStateType;
 
   onSizeChange?: (size: DensitySize) => void;
 
@@ -308,8 +340,15 @@ export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
   onDataSourceChange?: (dataSource: T[]) => void;
   /** @name 查询表单和 Table 的卡片 border 配置 */
   cardBordered?: Bordered;
-  /** Debounce time */
+  /** @name 去抖时间 */
   debounceTime?: number;
+  /**
+   * 只在request 存在的时候生效，可编辑表格也不会生效
+   *
+   * @default true
+   * @name 窗口聚焦时自动重新请求
+   */
+  revalidateOnFocus?: boolean;
   /** 默认的表格大小 */
   defaultSize?: SizeType;
   /** @name, 可编辑表格的name,通过这个name 可以直接与 form通信，无需嵌套 */
@@ -342,4 +381,5 @@ export type UseFetchProps = {
   manual: boolean;
   debounceTime?: number;
   polling?: number | ((dataSource: any[]) => number);
+  revalidateOnFocus?: boolean;
 };

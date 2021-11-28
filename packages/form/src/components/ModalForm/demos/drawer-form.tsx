@@ -5,6 +5,7 @@ import ProForm, {
   ProFormText,
   ProFormDateRangePicker,
   ProFormSelect,
+  ProFormInstance,
 } from '@ant-design/pro-form';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -17,7 +18,7 @@ const waitTime = (time: number = 100) => {
 };
 
 export default () => {
-  const formRef = useRef();
+  const formRef = useRef<ProFormInstance>();
   return (
     <DrawerForm<{
       name: string;
@@ -31,6 +32,7 @@ export default () => {
           新建表单
         </Button>
       }
+      autoFocusFirstInput
       drawerProps={{
         forceRender: true,
         destroyOnClose: true,

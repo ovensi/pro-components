@@ -192,13 +192,8 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
     },
   });
 
-  /** 如果有 ellipsis ，设置 tableLayout 为 fixed */
-  const tableLayout =
-    // 优先以用户设置为准
-    props.tableLayout ?? props.columns?.some((item) => item.ellipsis) ? 'fixed' : 'auto';
-
   /** 默认的 table dom，如果是编辑模式，外面还要包个 form */
-  const baseTableDom = <Table<T> {...getTableProps()} rowKey={rowKey} tableLayout={tableLayout} />;
+  const baseTableDom = <Table<T> {...getTableProps()} rowKey={rowKey} />;
 
   /** 自定义的 render */
   const tableDom = props.tableViewRender
@@ -211,10 +206,6 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
       )
     : baseTableDom;
 
-  useEffect(() => {
-    counter.setPrefixName(name);
-  }, [name]);
-
   const tableContentDom = useMemo(() => {
     if (props.editable) {
       return (
@@ -222,6 +213,13 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
           {toolbarDom}
           {alertDom}
           <ProForm
+            onInit={(_, form) => {
+              counter.setEditorTableForm(form);
+            }}
+            // @ts-ignore
+            formRef={(form) => {
+              counter.setEditorTableForm(form);
+            }}
             {...props.editable?.formProps}
             component={false}
             form={props.editable?.form}
@@ -248,7 +246,8 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
 
   /** Table 区域的 dom，为了方便 render */
   const tableAreaDom =
-    cardProps === false ? (
+    // cardProps 或者 有了name 就不需要这个padding了，不然会导致不好对其
+    cardProps === false || !!props.name ? (
       tableContentDom
     ) : (
       <Card
@@ -383,6 +382,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
         selectedRowsRef.current = rows;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [setSelectedRowKeys],
   );
 
@@ -443,6 +443,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     onLoadingChange,
     onRequestError,
     postData,
+    revalidateOnFocus: props.revalidateOnFocus ?? true,
     manual: formSearch === undefined,
     polling,
     effects: [stringify(params), stringify(formSearch), stringify(proFilter), stringify(proSort)],
@@ -466,8 +467,17 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     if (typeof rowKey === 'function') {
       return rowKey;
     }
-    return (record: T, index?: number) => (record as any)?.[rowKey as string] ?? index;
-  }, [rowKey]);
+    return (record: T, index?: number) => {
+      if (index === -1) {
+        return (record as any)?.[rowKey as string];
+      }
+      // 如果 props 中有name 的话，用index 来做行好，这样方便转化为 index
+      if (props.name) {
+        return index?.toString();
+      }
+      return (record as any)?.[rowKey as string] ?? index?.toString();
+    };
+  }, [props.name, rowKey]);
 
   useMemo(() => {
     if (action.dataSource?.length) {
@@ -504,12 +514,9 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
 
         // 通过request的时候清空数据，然后刷新不然可能会导致 pageSize 没有数据多
         if (request) action.setDataSource([]);
-
-        requestAnimationFrame(() => {
-          action.setPageInfo({
-            pageSize,
-            current: 1,
-          });
+        action.setPageInfo({
+          pageSize,
+          current: 1,
         });
       },
     };
@@ -518,6 +525,9 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
   }, [propsPagination, action, intl]);
 
   const counter = Container.useContainer();
+
+  // 设置 name 到 store 中，里面用了 ref ，所以不用担心直接 set
+  counter.setPrefixName(props.name);
 
   /** 清空所有的选中项 */
   const onCleanSelected = useCallback(() => {

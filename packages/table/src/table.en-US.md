@@ -15,6 +15,9 @@ ProTable was created to solve the problem of having to write a lot of sample cod
 
 Thanks to ProForm's capabilities, ProForm can take many forms, switch between query form types, set up deformations to become a simple Form form, perform new creation, etc.
 
+![layout
+](https://gw.alipayobjects.com/zos/antfincdn/Hw%26ryTueTW/bianzu%2525204.png)
+
 ## When to Use
 
 When your forms need to interact with the server or need multiple cell styles, ProTable is the right choice.
@@ -271,8 +274,6 @@ ProTable puts a layer of wrapping on top of antd's Table, supports some presets,
 | defaultSize | Default size | SizeType | - |
 | beforeSearchSubmit | Make some changes before searching | `(params:T)=>T` | - |
 | onSizeChange | The table size has changed | `(size:'default' \|'middle' \|'small') => void` | - |
-| columnsStateMap | column state enumeration | `{key:{ show,fixed }}}` | - |
-| onColumnsStateChange | The status of columns has changed | `(props: {key:{ show,fixed }}}) => void` | - |
 | type | pro-table type | `"form"` | - |
 | form | antd form configuration | [FormProps](https://ant.design/components/form-cn/#API) | - |
 | onSubmit | Triggered when the form is submitted | `(params: U) => void` | - |
@@ -285,6 +286,8 @@ ProTable puts a layer of wrapping on top of antd's Table, supports some presets,
 | editable | Related configuration of editable table | [TableRowEditable<T>](/components/editable-table#editable-Editable row configuration) | - |
 | cardBordered | Border of Card components around Table and Search | `boolean \| {search?: boolean, table?: boolean}` | false |
 | debounceTime | Debounce time | `number` | 10 |
+| revalidateOnFocus ｜ Automatically re-request when the window is focused ｜ `boolean` | `true` |
+| ColumnState | Column Status Control, you can operate the display hide | `columnStateType` | - |
 
 #### RecordCreator
 
@@ -293,6 +296,16 @@ ProTable puts a layer of wrapping on top of antd's Table, supports some presets,
 | record | The row data to be added, generally contains a unique key | `T` | `{}` |
 | position | Where does the line increase, start or end | `top` \| `bottom` | `bottom` |
 | (...buttonProps) | [ButtonProps](https://ant.design/components/button-cn/#API) of antd | ButtonProps | — |
+
+#### ColumnStateType
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| defaultValue | The default value of the column status, only for the first time | `record <string, columnState>;` |
+| value | Column status, support controlled mode | `Record <string, columnState>;` |
+| onChange | Column status After changing | `(Value: Record <string, columnSstate>) => Viod` |
+| PersistenceKey | The key of the persistence column is used to determine if it is the same table | `string \| Number` |
+| PersistenceType | The type of persistence column, localStorage is also existing after closing the browser, sessionStorage closes the browser will be lost | `localstorage \| sessionStorage` |
 
 #### Search Search form
 
@@ -382,18 +395,18 @@ ref.current.cancelEditable(rowKey);
 > Requesting remote data is more complicated, please see [here](https://procomponents.ant.design/components/schema#request-%E5%92%8C-params) for details.
 
 | Property | Description | Type | Default Value |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | title | Basically the same as in antd, but supports passing in a method | `ReactNode \| ((config: ProColumnType<T>, type: ProTableTypes) => ReactNode)` | - |
 | tooltip | An icon will be displayed after the title, and some information will be prompted after hover | string | - |
 | ellipsis | Whether to abbreviate automatically | `boolean` | - |
 | copyable | Whether to support copying | `boolean` | - |
-| valueEnum | The value enumeration will automatically convert the value as a key to retrieve the content to be displayed | [valueEnum](#valueenum) | - |
+| valueEnum | The value enumeration will automatically convert the value as a key to retrieve the content to be displayed | [valueEnum](/components/schema#valueenum) | - |
 | valueType | The type of value, which will generate different renderers | [`valueType`](/components/schema#valuetype) | `text` |
 | order | The weight in the query form, the weight is ranked first | `number` | - |
 | fieldProps | The props of the query form will be transparently transmitted to the form item. If it is rendered as Input, all props of input are supported. Similarly, if it is select, all props of select are also supported. Also supports method input | `` (form,config)=>Record`\| `Record `` | - |
 | `formItemProps` | The configuration passed to Form.Item can be configured with rules, but the default query form rules does not take effect. Need to configure `ignoreRules` | `(form,config)=>formItemProps` \| `formItemProps` | - |
-| renderText | Render like table, but must return string. If you just want to convert enumeration, you can use [valueEnum](#valueEnum) | `(text: any,record: T,index: number,action: UseFetchDataAction<T> ) => string` | - |
-| render | Render similar to table, the first parameter becomes dom, and the fourth parameter action is added | `(text: ReactNode,record: T,index: number,action: UseFetchDataAction<T>) => ReactNode \  | ReactNode[]` | - |
+| renderText | Render like table, but must return string. If you just want to convert enumeration, you can use [valueEnum](/components/schema#valueenum) | `(text: any,record: T,index: number,action: UseFetchDataAction<T> ) => string` | - |
+| render | Render similar to table, the first parameter becomes dom, and the fourth parameter action is added | `(text: ReactNode,record: T,index: number,action: UseFetchDataAction<T>) => ReactNode \| ReactNode[]` | - |
 | renderFormItem | Render the input components of the query form | `(item,{ type, defaultRender, formItemProps, fieldProps, ...rest },form) => ReactNode` | - |
 | search | Configuration column search related, false is hidden | `false` \| `{ transform: (value: any) => any }` | true |
 | search.transform | The key of the conversion value, generally used for the conversion of the event interval | `(value: any) => any` | - |

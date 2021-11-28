@@ -51,12 +51,16 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                           class="ant-table-cell"
                         />
                         <th
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
                         >
                           <div
                             class="ant-pro-core-label-tip"
                           >
-                            标题
+                            <div
+                              class="ant-pro-core-label-tip-title ant-pro-core-label-tip-title-ellipsis"
+                            >
+                              标题
+                            </div>
                             <span
                               class="ant-pro-core-label-tip-icon"
                             >
@@ -161,7 +165,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]yarn install命令 antd2.4.5会报错"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -217,9 +222,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -262,7 +265,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]无法创建工程npm create umi"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -318,9 +322,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -363,7 +365,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🧐 [问题] build 后还存在 es6 的代码（Umi@2.13.13）"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -419,9 +422,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps 1`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -537,12 +538,16 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                           class="ant-table-cell"
                         />
                         <th
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
                         >
                           <div
                             class="ant-pro-core-label-tip"
                           >
-                            标题
+                            <div
+                              class="ant-pro-core-label-tip-title ant-pro-core-label-tip-title-ellipsis"
+                            >
+                              标题
+                            </div>
                             <span
                               class="ant-pro-core-label-tip-icon"
                             >
@@ -725,7 +730,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]yarn install命令 antd2.4.5会报错"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -781,9 +787,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -826,7 +830,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]无法创建工程npm create umi"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -882,9 +887,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -927,7 +930,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🧐 [问题] build 后还存在 es6 的代码（Umi@2.13.13）"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -983,9 +987,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps.positio
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1069,12 +1071,16 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                           class="ant-table-cell"
                         />
                         <th
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
                         >
                           <div
                             class="ant-pro-core-label-tip"
                           >
-                            标题
+                            <div
+                              class="ant-pro-core-label-tip-title ant-pro-core-label-tip-title-ellipsis"
+                            >
+                              标题
+                            </div>
                             <span
                               class="ant-pro-core-label-tip-icon"
                             >
@@ -1179,7 +1185,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]yarn install命令 antd2.4.5会报错"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -1235,9 +1242,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1280,7 +1285,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🐛 [BUG]无法创建工程npm create umi"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -1336,9 +1342,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1381,7 +1385,8 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                           </div>
                         </td>
                         <td
-                          class="ant-table-cell"
+                          class="ant-table-cell ant-table-cell-ellipsis"
+                          title="🧐 [问题] build 后还存在 es6 的代码（Umi@2.13.13）"
                         >
                           <span
                             class="ant-typography ant-typography-ellipsis ant-typography-single-line"
@@ -1437,9 +1442,7 @@ exports[`EditorProTable 📝 EditableProTable support recordCreatorProps=false 1
                         <td
                           class="ant-table-cell"
                         >
-                          <span>
-                            2020-05-26
-                          </span>
+                          2020-05-26
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1538,17 +1541,8 @@ exports[`EditorProTable 📝 columns initialValue alway work 1`] = `
                         data-row-key="624748504"
                       >
                         <td
-                          class="ant-table-cell ant-table-cell-with-append"
+                          class="ant-table-cell"
                         >
-                          <span
-                            class="ant-table-row-indent indent-level-0"
-                            style="padding-left: 0px;"
-                          />
-                          <button
-                            aria-label="展开行"
-                            class="ant-table-row-expand-icon ant-table-row-expand-icon-spaced"
-                            type="button"
-                          />
                           <div
                             class="ant-row ant-form-item"
                             style="margin: -5px 0px -5px 0px;"
@@ -1569,14 +1563,14 @@ exports[`EditorProTable 📝 columns initialValue alway work 1`] = `
                                       class="ant-input"
                                       placeholder="请输入"
                                       type="text"
-                                      value=""
+                                      value="🐛 [BUG]yarn install命令 antd2.4.5会报错"
                                     />
                                     <span
                                       class="ant-input-suffix"
                                     >
                                       <span
                                         aria-label="close-circle"
-                                        class="anticon anticon-close-circle ant-input-clear-icon-hidden ant-input-clear-icon"
+                                        class="anticon anticon-close-circle ant-input-clear-icon"
                                         role="button"
                                         tabindex="-1"
                                       >
@@ -1710,64 +1704,6 @@ exports[`EditorProTable 📝 columns initialValue alway work 1`] = `
                               </div>
                             </div>
                           </div>
-                        </td>
-                      </tr>
-                      <tr
-                        class="ant-table-row ant-table-row-level-0"
-                        data-row-key="624691229"
-                      >
-                        <td
-                          class="ant-table-cell ant-table-cell-with-append"
-                        >
-                          <span
-                            class="ant-table-row-indent indent-level-0"
-                            style="padding-left: 0px;"
-                          />
-                          <button
-                            aria-label="展开行"
-                            class="ant-table-row-expand-icon ant-table-row-expand-icon-spaced"
-                            type="button"
-                          />
-                          -
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          -
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr
-                        class="ant-table-row ant-table-row-level-0"
-                        data-row-key="624674790"
-                      >
-                        <td
-                          class="ant-table-cell ant-table-cell-with-append"
-                        >
-                          <span
-                            class="ant-table-row-indent indent-level-0"
-                            style="padding-left: 0px;"
-                          />
-                          <button
-                            aria-label="展开行"
-                            class="ant-table-row-expand-icon ant-table-row-expand-icon-collapsed"
-                            type="button"
-                          />
-                          -
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          -
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          -
                         </td>
                       </tr>
                     </tbody>
@@ -2020,7 +1956,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
   >
     <div
       class="ant-card-body"
-      style="padding-top:0"
+      style="padding-top: 0px;"
     >
       <div
         class="ant-table-wrapper"
@@ -2041,11 +1977,11 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                   class="ant-table-content"
                 >
                   <table
-                    style="table-layout:fixed"
+                    style="table-layout: fixed;"
                   >
                     <colgroup>
                       <col
-                        style="width:48px"
+                        style="width: 48px;"
                       />
                     </colgroup>
                     <thead
@@ -2069,7 +2005,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                         >
                           <span
                             class="ant-table-row-indent indent-level-0"
-                            style="padding-left:0px"
+                            style="padding-left: 0px;"
                           />
                           <button
                             aria-label="展开行"
@@ -2078,7 +2014,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                           />
                           <div
                             class="ant-row ant-form-item"
-                            style="margin-top:-5px;margin-bottom:-5px;margin-left:0;margin-right:0"
+                            style="margin: -5px 0px -5px 0px;"
                           >
                             <div
                               class="ant-col ant-form-item-control"
@@ -2091,7 +2027,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                                 >
                                   <div
                                     class="ant-row ant-form-item"
-                                    style="margin-top:-5px;margin-bottom:-5px;margin-left:0;margin-right:0"
+                                    style="margin: -5px 0px -5px 0px;"
                                   >
                                     <div
                                       class="ant-col ant-form-item-control"
@@ -2126,7 +2062,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                         >
                           <span
                             class="ant-table-row-indent indent-level-0"
-                            style="padding-left:0px"
+                            style="padding-left: 0px;"
                           />
                           <button
                             aria-label="展开行"
@@ -2149,7 +2085,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
                         >
                           <span
                             class="ant-table-row-indent indent-level-0"
-                            style="padding-left:0px"
+                            style="padding-left: 0px;"
                           />
                           <button
                             aria-label="展开行"
@@ -2173,7 +2109,7 @@ exports[`EditorProTable 📝 renderFormItem run defaultRender 1`] = `
       </div>
       <button
         class="ant-btn ant-btn-dashed"
-        style="display:block;margin:10px 0;width:100%"
+        style="display: block; margin: 10px 0px; width: 100%;"
         type="button"
       >
         <span

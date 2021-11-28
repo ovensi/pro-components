@@ -1,4 +1,5 @@
-@import '~antd/es/style/themes/default.less';
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
 @import '~antd/es/list/style/index.less';
 
 @pro-list-prefix-cls: ~'@{ant-prefix}-pro-list';
@@ -46,6 +47,11 @@
 
       &:hover {
         background-color: transparent;
+      }
+
+      .@{ant-prefix}-list-item-meta-title {
+        margin: 0;
+        line-height: 22px;
       }
     }
 
@@ -199,6 +205,13 @@
   }
 
   .@{ant-prefix}-list {
+    &-item {
+      padding: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .ant-list-vertical .ant-pro-list-row .@{ant-prefix}-list {
     &-header {
       padding: 0;
       border-bottom: none;
@@ -216,6 +229,7 @@
       &-action-split {
         display: none;
       }
+
       &-meta-title {
         margin: 0;
       }
@@ -239,7 +253,7 @@
 
   .@{ant-prefix}-list-vertical {
     .@{pro-list-prefix-cls}-row {
-      padding: 0 24px;
+      padding: 12px 18px 12px 24px;
 
       &-header-title {
         display: flex;

@@ -92,6 +92,10 @@ ProForm is the best choice when you want to implement a form quickly but don't w
 
 <code src="./demos/layout-base.tsx" iframe="764px" />
 
+### Money
+
+<code src="./demos/money.tsx" height="248px" title="Money" />
+
 ### Form linkage
 
 <code src="./demos/linkage-customization.tsx" heigh="1774px" />
@@ -114,6 +118,8 @@ ProForm is a repackaging of antd Form, if you want to customize form elements, P
 | omitNil | ProForm automatically clears null and undefined data, if you have agreed that nil means something, set to false to disable this feature | `boolean` | true |
 | params | Parameters for initiating network requests, used in conjunction with request | `Record` | - |
 | request | The parameters of the initiating network request, the return value will be overwritten to initialValues | `(params)=>Promise<data>` | - |
+| isKeyPressSubmit | Whether to use carriage return to submit | `boolean` | - |
+| autoFocusFirstInput | The first input box of the auto focus form | `boolean` | - |
 | string | [(...)](https://ant.design/components/form/) | support other antd `Form` component parameters besides `wrapperCol` \| `labelCol` \| `layout` | - |
 
 ### ProForm.Group

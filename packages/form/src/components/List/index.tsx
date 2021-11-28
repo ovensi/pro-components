@@ -1,17 +1,16 @@
-﻿import type { ReactNode } from 'react';
-import React, { useContext, useRef, useMemo } from 'react';
+﻿import { CopyOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { runFunction } from '@ant-design/pro-utils';
 import type { ButtonProps, FormInstance } from 'antd';
+import { Button, ConfigProvider, Form, Tooltip } from 'antd';
+import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import type { FormListFieldData, FormListOperation, FormListProps } from 'antd/lib/form/FormList';
+import type { NamePath } from 'antd/lib/form/interface';
 import omit from 'omit.js';
 import toArray from 'rc-util/lib/Children/toArray';
-import { Button, Form, Tooltip, ConfigProvider } from 'antd';
-import type { FormListFieldData, FormListOperation, FormListProps } from 'antd/lib/form/FormList';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import type { NamePath } from 'antd/lib/form/interface';
-import { DeleteOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
-
-import './index.less';
 import get from 'rc-util/lib/utils/get';
-import { runFunction } from '@ant-design/pro-utils';
+import type { ReactNode } from 'react';
+import React, { useContext, useImperativeHandle, useMemo, useRef } from 'react';
+import './index.less';
 
 type IconConfig = {
   Icon?: React.FC<any>;
@@ -25,15 +24,19 @@ const FormListContext = React.createContext<
   | Record<string, any>
 >({});
 
-type ChildrenFunction = (
-  fields: FormListFieldData[],
-  operation: FormListOperation,
-  meta: {
-    errors: React.ReactNode[];
-  },
-) => React.ReactNode;
+// type ChildrenFunction = (
+//   fields: FormListFieldData[],
+//   operation: FormListOperation,
+//   meta: {
+//     errors: React.ReactNode[];
+//   },
+// ) => React.ReactNode;
 
-type ChildrenItemFunction = (field: FormListFieldData, index: number) => React.ReactNode;
+type ChildrenItemFunction = (
+  field: FormListFieldData,
+  index: number,
+  operation: FormListOperation,
+) => React.ReactNode;
 
 export type ProFormListProps = Omit<FormListProps, 'children'> & {
   creatorButtonProps?:
@@ -44,13 +47,14 @@ export type ProFormListProps = Omit<FormListProps, 'children'> & {
       });
   creatorRecord?: Record<string, any> | (() => Record<string, any>);
   label?: ReactNode;
+  alwaysShowItemLabel?: boolean;
   tooltip?: LabelTooltipType;
   actionRender?: (
     field: FormListFieldData,
     action: FormListOperation,
     defaultActionDom: ReactNode[],
   ) => ReactNode[];
-  children: ReactNode | ChildrenFunction;
+  children: ReactNode | ChildrenItemFunction;
   itemContainerRender?: (
     doms: ReactNode,
     listMeta: {
@@ -88,11 +92,14 @@ const listToArray = (children?: ReactNode | ReactNode[]) => {
   if (Array.isArray(children)) {
     return children;
   }
+  if (typeof children === 'function') {
+    return [children];
+  }
   return toArray(children);
 };
+
 type ProFormListItemProps = {
   creatorButtonProps: ProFormListProps['creatorButtonProps'];
-
   formInstance: FormInstance;
   copyIconProps: ProFormListProps['copyIconProps'];
   deleteIconProps: ProFormListProps['deleteIconProps'];
@@ -107,6 +114,8 @@ type ProFormListItemProps = {
     errors: ReactNode[];
   };
   name: ProFormListProps['name'];
+  originName: ProFormListProps['name'];
+  alwaysShowItemLabel: ProFormListProps['alwaysShowItemLabel'];
 };
 
 const ProFormListItem: React.FC<
@@ -131,6 +140,7 @@ const ProFormListItem: React.FC<
     field,
     index,
     formInstance,
+    alwaysShowItemLabel,
     ...rest
   } = props;
   const listContext = useContext(FormListContext);
@@ -138,13 +148,14 @@ const ProFormListItem: React.FC<
   const childrenArray = listToArray(children)
     .map((childrenItem) => {
       if (typeof childrenItem === 'function') {
-        return (childrenItem as ChildrenItemFunction)?.(field, index);
+        return (childrenItem as ChildrenItemFunction)?.(field, index, action);
       }
       return childrenItem;
     })
     .map((childrenItem, childIndex) => {
       if (React.isValidElement(childrenItem)) {
         return React.cloneElement(childrenItem, {
+          // eslint-disable-next-line react/no-array-index-key
           key: childIndex,
           ...childrenItem?.props,
         });
@@ -213,7 +224,7 @@ const ProFormListItem: React.FC<
     options,
   ) || (
     <div
-      className={`${prefixCls}-item`}
+      className={`${prefixCls}-item${alwaysShowItemLabel ? ` ${prefixCls}-item-show-label` : ''}`}
       style={{
         display: 'flex',
         alignItems: 'flex-end',
@@ -223,13 +234,12 @@ const ProFormListItem: React.FC<
       {dom}
     </div>
   );
-
   return (
     <FormListContext.Provider
       key={field.name}
       value={{
         ...field,
-        listName: [listContext.listName, rest.name, field.name]
+        listName: [listContext.listName, rest.originName, field.name]
           .filter((item) => item !== undefined)
           .flat(1),
       }}
@@ -274,7 +284,7 @@ const ProFormListContainer: React.FC<ProFormListItemProps> = (props) => {
     >
       {creatorButtonProps !== false && creatorButtonProps?.position === 'top' && creatorButton}
       {fields.map((field, index) => (
-        <ProFormListItem key={field.name.toString()} {...props} field={field} index={index}>
+        <ProFormListItem key={field.key} {...props} field={field} index={index}>
           {children}
         </ProFormListItem>
       ))}
@@ -287,6 +297,7 @@ const ProFormList: React.FC<ProFormListProps> = ({
   actionRender,
   creatorButtonProps,
   label,
+  alwaysShowItemLabel,
   tooltip,
   creatorRecord,
   itemRender,
@@ -301,9 +312,10 @@ const ProFormList: React.FC<ProFormListProps> = ({
     Icon: DeleteOutlined,
     tooltipText: '删除此行',
   },
+  actionRef,
   ...rest
 }) => {
-  const actionRef = useRef<FormListOperation>();
+  const actionRefs = useRef<FormListOperation>();
   const context = useContext(ConfigProvider.ConfigContext);
   const listContext = useContext(FormListContext);
   const baseClassName = context.getPrefixCls('pro-form-list');
@@ -314,6 +326,9 @@ const ProFormList: React.FC<ProFormListProps> = ({
     }
     return [listContext.name, rest.name].flat(1);
   }, [listContext.name, rest.name]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useImperativeHandle(actionRef, () => actionRefs.current, [actionRefs.current]);
 
   return (
     <Form.Item
@@ -329,15 +344,13 @@ const ProFormList: React.FC<ProFormListProps> = ({
           <div className={baseClassName}>
             <Form.List rules={rules} {...rest} name={name}>
               {(fields, action, meta) => {
-                if (typeof children === 'function') {
-                  return (children as ChildrenFunction)(fields, action, meta);
-                }
                 // 将 action 暴露给外部
-                actionRef.current = action;
+                actionRefs.current = action;
                 return (
                   <>
                     <ProFormListContainer
                       name={name}
+                      originName={rest.name}
                       copyIconProps={copyIconProps}
                       deleteIconProps={deleteIconProps}
                       formInstance={formInstance as any}
@@ -350,6 +363,7 @@ const ProFormList: React.FC<ProFormListProps> = ({
                       creatorRecord={creatorRecord}
                       actionRender={actionRender}
                       action={action}
+                      alwaysShowItemLabel={alwaysShowItemLabel}
                     >
                       {children}
                     </ProFormListContainer>

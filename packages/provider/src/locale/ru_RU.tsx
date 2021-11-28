@@ -19,14 +19,14 @@ export default {
   },
   alert: {
     clear: 'Очистить',
-    selected: 'выбранный',
-    item: 'предмет',
+    selected: 'Выбрано',
+    item: 'элементов',
   },
   pagination: {
     total: {
       range: ' ',
       total: 'из',
-      item: 'предметов',
+      item: 'элементов',
     },
   },
   tableToolBar: {
@@ -52,6 +52,9 @@ export default {
     next: 'Следующий',
     prev: 'Предыдущий',
     submit: 'Завершить',
+  },
+  loginForm: {
+    submitText: 'Вход',
   },
   editableTable: {
     action: {

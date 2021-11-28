@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { SelectProps } from 'antd';
 import ProFormField from '../Field';
 import type { ProSchema } from '@ant-design/pro-utils';
 import { runFunction } from '@ant-design/pro-utils';
 import type { ProFormFieldItemProps } from '../../interface';
+import FieldContext from '../../FieldContext';
 
 export type ProFormSelectProps<T = any> = ProFormFieldItemProps<
   SelectProps<T> & {
@@ -26,6 +27,8 @@ export type ProFormSelectProps<T = any> = ProFormFieldItemProps<
   valueEnum?: ProSchema['valueEnum'];
   params?: ProSchema['params'];
   request?: ProSchema['request'];
+  /** 防抖动时间 默认10 单位ms */
+  debounceTime?: number;
   options?: SelectProps<any>['options'] | string[];
   mode?: SelectProps<any>['mode'] | 'single';
   showSearch?: SelectProps<any>['showSearch'];
@@ -53,6 +56,8 @@ const ProFormSelectComponents = React.forwardRef<any, ProFormSelectProps<any>>(
     },
     ref,
   ) => {
+    const context = useContext(FieldContext);
+
     return (
       <ProFormField<any>
         mode="edit"
@@ -66,6 +71,7 @@ const ProFormSelectComponents = React.forwardRef<any, ProFormSelectProps<any>>(
             options,
             mode,
             showSearch,
+            getPopupContainer: context.getPopupContainer,
             ...fieldProps,
           } as SelectProps<any>
         }
@@ -94,9 +100,9 @@ const SearchSelect = React.forwardRef<any, ProFormSelectProps<any>>(
       showArrow: false,
       autoClearSearchValue: true,
       optionLabelProp: 'label',
-      filterOption: false,
       ...fieldProps,
     };
+    const context = useContext(FieldContext);
     return (
       <ProFormField<any>
         mode="edit"
@@ -105,7 +111,7 @@ const SearchSelect = React.forwardRef<any, ProFormSelectProps<any>>(
         params={params}
         valueType="select"
         filedConfig={{ customLightMode: true }}
-        fieldProps={props}
+        fieldProps={{ getPopupContainer: context.getPopupContainer, ...props }}
         ref={ref}
         proFieldProps={proFieldProps}
         {...rest}
@@ -129,5 +135,9 @@ const WrappedProFormSelect = ProFormSelect as (<T = any>(
 };
 
 WrappedProFormSelect.SearchSelect = ProFormSearchSelect;
+
+// @ts-ignore
+// eslint-disable-next-line no-param-reassign
+WrappedProFormSelect.displayName = 'ProFormComponent';
 
 export default WrappedProFormSelect;

@@ -1,9 +1,9 @@
-import type { SpaceProps } from 'antd';
-import type { ReactNode } from 'react';
+import type { FormItemProps, SpaceProps } from 'antd';
 import type { ProFormItemProps } from './components/FormItem';
+import type { ProFormInstance } from './BaseForm';
 import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
 import type React from 'react';
-import type { ProFieldProps, SearchTransformKeyFn } from '@ant-design/pro-utils';
+import type { ProFieldProps, ProFieldValueType, SearchTransformKeyFn } from '@ant-design/pro-utils';
 
 export type ProFormItemCreateConfig = {
   /** 自定义类型 */
@@ -78,6 +78,8 @@ export type GroupProps = {
   defaultCollapsed?: boolean;
   /** 折叠修改的事件 */
   onCollapse?: (collapsed: boolean) => void;
+  /** 自定选中一个input，只能有一个生效 */
+  autoFocus?: boolean;
 };
 
 export type FieldProps = {
@@ -90,7 +92,7 @@ export type LightFilterFooterRender =
   | ((
       onConfirm?: (e?: React.MouseEvent) => void,
       onClear?: (e?: React.MouseEvent) => void,
-    ) => JSX.Element)
+    ) => JSX.Element | false)
   | false;
 
 export type ProFormFieldItemProps<T = Record<string, any>> = {
@@ -113,5 +115,5 @@ export type ProFormFieldItemProps<T = Record<string, any>> = {
 
   /** QueryFilter 上的footer */
   footerRender?: LightFilterFooterRender;
-} & ProFormItemProps &
+} & Omit<ProFormItemProps, 'valueType'> &
   ExtendsProps;

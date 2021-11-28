@@ -113,7 +113,6 @@ function createField<P extends ProFormFieldItemProps = any>(
     if (realFieldPropsStyle.width !== undefined && (rest as any).valueType === 'switch') {
       delete realFieldPropsStyle.width;
     }
-
     const field = (
       <Field
         // ProXxx 上面的 props 透传给 FieldProps，可能包含 Field 自定义的 props，
@@ -141,11 +140,12 @@ function createField<P extends ProFormFieldItemProps = any>(
           // @ts-ignore
           mode: readonly ? 'read' : rest?.mode,
           params: rest.params,
-          proFieldKey: `form-field-${otherProps?.name}`,
+          proFieldKey: otherProps?.name && `form-field-${otherProps.name}`,
           ...proFieldProps,
         })}
       />
     );
+
     return (
       <ProFormItem
         // 全局的提供一个 tip 功能，可以减少代码量
@@ -174,13 +174,19 @@ function createField<P extends ProFormFieldItemProps = any>(
           labelFormatter: lightFilterLabelFormatter,
           valuePropName,
           footerRender: field?.props?.footerRender,
+          // 使用用户的配置覆盖默认的配置
+          ...rest.lightProps,
+          ...otherProps.lightProps,
         })}
       >
         {field}
       </ProFormItem>
     );
   };
-
+  // 标记是否是 proform 的组件
+  // @ts-ignore
+  // eslint-disable-next-line no-param-reassign
+  FieldWithContext.displayName = 'ProFormComponent';
   return FieldWithContext as ProFormComponent<P, ExtendsProps>;
 }
 

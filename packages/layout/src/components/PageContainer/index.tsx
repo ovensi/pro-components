@@ -80,15 +80,18 @@ export type PageContainerProps = {
    *
    * @name 是否加载
    */
-  loading?: boolean | SpinProps;
+  loading?: boolean | SpinProps | React.ReactNode;
 
   /** 自定义 breadcrumb,返回false不展示 */
   breadcrumbRender?: PageHeaderProps['breadcrumbRender'] | false;
 
   /** @name 水印的配置 */
   waterMarkProps?: WaterMarkProps;
+
+  /** @name 配置面包屑 */
+  breadcrumb?: BreadcrumbProps;
 } & PageHeaderTabConfig &
-  Omit<PageHeaderProps, 'title' | 'footer' | 'breadcrumbRender'>;
+  Omit<PageHeaderProps, 'title' | 'footer' | 'breadcrumbRender' | 'breadcrumb'>;
 
 function genLoading(spinProps: boolean | SpinProps) {
   if (typeof spinProps === 'object') {
@@ -109,7 +112,7 @@ const renderFooter: React.FC<
     'title'
   >
 > = ({ tabList, tabActiveKey, onTabChange, tabBarExtraContent, tabProps, prefixedClassName }) => {
-  if (tabList && tabList.length) {
+  if ((tabList && tabList.length) || tabBarExtraContent) {
     return (
       <Tabs
         className={`${prefixedClassName}-tabs`}
@@ -122,7 +125,7 @@ const renderFooter: React.FC<
         tabBarExtraContent={tabBarExtraContent}
         {...tabProps}
       >
-        {tabList.map((item, index) => (
+        {tabList?.map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <Tabs.TabPane {...item} tab={item.tab} key={item.key || index} />
         ))}
@@ -190,6 +193,13 @@ const ProPageHeader: React.FC<PageContainerProps & { prefixedClassName: string }
     ...restProps
   } = props;
 
+  const getBreadcrumbRender = useMemo(() => {
+    if (!breadcrumbRender) {
+      return undefined;
+    }
+    return breadcrumbRender;
+  }, [breadcrumbRender]);
+
   if (pageHeaderRender === false) {
     return null;
   }
@@ -216,9 +226,7 @@ const ProPageHeader: React.FC<PageContainerProps & { prefixedClassName: string }
     breadcrumb: BreadcrumbProps;
   };
   const noHasBreadCrumb =
-    !breadcrumb ||
-    breadcrumbRender === false ||
-    (!breadcrumb?.itemRender && !breadcrumb?.routes?.length);
+    (!breadcrumb || (!breadcrumb?.itemRender && !breadcrumb?.routes?.length)) && !breadcrumbRender;
 
   if (
     ['title', 'subTitle', 'extra', 'tags', 'footer', 'avatar', 'backIcon'].every(
@@ -240,6 +248,7 @@ const ProPageHeader: React.FC<PageContainerProps & { prefixedClassName: string }
             ? undefined
             : { ...pageHeaderProps.breadcrumb, ...value.breadcrumbProps }
         }
+        breadcrumbRender={getBreadcrumbRender}
         prefixCls={prefixCls}
       >
         {header?.children || renderPageHeader(content, extraContent, prefixedClassName)}
@@ -295,15 +304,28 @@ const PageContainer: React.FC<PageContainerProps> = (props) => {
       prefixedClassName={prefixedClassName}
     />
   );
+  const loadingDom = useMemo(() => {
+    // 当loading时一个合法的ReactNode时，说明用户使用了自定义loading,直接返回改自定义loading
+    if (React.isValidElement(loading)) {
+      return loading;
+    }
+    // 当传递过来的是布尔值，并且为false时，说明不需要显示loading,返回null
+    if (typeof loading === 'boolean' && !loading) {
+      return null;
+    }
+    // 如非上述两种情况，那么要么用户传了一个true,要么用户传了loading配置，使用genLoading生成loading配置后返回PageLoading
+    const spinProps = genLoading(loading as boolean | SpinProps);
+    return <PageLoading {...spinProps} />;
+  }, [loading]);
 
   const renderContentDom = useMemo(() => {
-    const spinProps = genLoading(loading);
-    const dom = spinProps.spinning ? <PageLoading {...spinProps} /> : content;
+    // 只要loadingDom非空我们就渲染loadingDom,否则渲染内容
+    const dom = loadingDom || content;
     if (props.waterMarkProps || value.waterMarkProps) {
       return <WaterMark {...(props.waterMarkProps || value.waterMarkProps)}>{dom}</WaterMark>;
     }
     return dom;
-  }, [content, loading, props.waterMarkProps, value.waterMarkProps]);
+  }, [props.waterMarkProps, value.waterMarkProps, loadingDom, content]);
 
   return (
     <div style={style} className={containerClassName}>

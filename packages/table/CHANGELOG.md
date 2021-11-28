@@ -2,6 +2,135 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.58.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.58.0...@ant-design/pro-table@2.58.1) (2021-11-23)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+# [2.58.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.57.3...@ant-design/pro-table@2.58.0) (2021-11-23)
+
+### Features
+
+- **table:** request add record props ([5ec71f8](https://github.com/ant-design/pro-components/commit/5ec71f823619ccbe798391c446427aa1371208bb))
+
+## [2.57.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.57.2...@ant-design/pro-table@2.57.3) (2021-11-22)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.57.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.57.1...@ant-design/pro-table@2.57.2) (2021-11-18)
+
+### Bug Fixes
+
+- **descriptions:** unuse protable ([#4062](https://github.com/ant-design/pro-components/issues/4062)) ([04d6a6c](https://github.com/ant-design/pro-components/commit/04d6a6c94aaf1597ec5bbdb9135fdacbdca9640a))
+- **table:** fix table validateFields no work error ([#4058](https://github.com/ant-design/pro-components/issues/4058)) ([0291e08](https://github.com/ant-design/pro-components/commit/0291e085a17d57d654b698695e9a2c31915a07e0))
+- **table:** pro table support lightProps ([#4068](https://github.com/ant-design/pro-components/issues/4068)) ([ce15148](https://github.com/ant-design/pro-components/commit/ce151487c7dbd17917a0be0aec09d4e01237ff6a))
+
+## [2.57.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.57.0...@ant-design/pro-table@2.57.1) (2021-11-16)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+# [2.57.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.9...@ant-design/pro-table@2.57.0) (2021-11-15)
+
+### Features
+
+- **form:** support antd next ([#4038](https://github.com/ant-design/pro-components/issues/4038)) ([96a64c3](https://github.com/ant-design/pro-components/commit/96a64c35d0fc6a359a4ff3d36b96f510f4580c63)), closes [#3770](https://github.com/ant-design/pro-components/issues/3770) [#3863](https://github.com/ant-design/pro-components/issues/3863)
+- **table:** add card table ([#4033](https://github.com/ant-design/pro-components/issues/4033)) ([b2a205d](https://github.com/ant-design/pro-components/commit/b2a205d72c2afe1e9cfca6fe0e61dcbf9a1611e5))
+
+## [2.56.9](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.8...@ant-design/pro-table@2.56.9) (2021-11-12)
+
+### Bug Fixes
+
+- **form:** fix proform.item no support QueryFilter error ([#4011](https://github.com/ant-design/pro-components/issues/4011)) ([5eff600](https://github.com/ant-design/pro-components/commit/5eff600f580d99452f9e1a84b7c36c315e55804f))
+- **table:** fix editor table rowkey error ([#4000](https://github.com/ant-design/pro-components/issues/4000)) ([8760aad](https://github.com/ant-design/pro-components/commit/8760aad6d95b514ab57ef857adf74219fe006e99))
+
+## [2.56.8](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.7...@ant-design/pro-table@2.56.8) (2021-11-08)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.56.7](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.6...@ant-design/pro-table@2.56.7) (2021-11-02)
+
+### Bug Fixes
+
+- **list:** fix list style error ([#3943](https://github.com/ant-design/pro-components/issues/3943)) ([68e0eed](https://github.com/ant-design/pro-components/commit/68e0eede7131932eb9e16734bb5bbb3c8fa0572e))
+
+## [2.56.6](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.5...@ant-design/pro-table@2.56.6) (2021-10-28)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.56.5](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.4...@ant-design/pro-table@2.56.5) (2021-10-27)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.56.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.3...@ant-design/pro-table@2.56.4) (2021-10-26)
+
+### Bug Fixes
+
+- **table:** fix when dataSource=null, no work error ([#3877](https://github.com/ant-design/pro-components/issues/3877)) ([ffb9ccc](https://github.com/ant-design/pro-components/commit/ffb9ccc739acb6226f0c7f0bfb3a7efa24c28b8b))
+
+## [2.56.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.2...@ant-design/pro-table@2.56.3) (2021-10-19)
+
+### Bug Fixes
+
+- **table:** header support ellipsis ([#3855](https://github.com/ant-design/pro-components/issues/3855)) ([0f3501d](https://github.com/ant-design/pro-components/commit/0f3501da23f9f8a1cc596f913fef21e12a570efa))
+
+## [2.56.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.1...@ant-design/pro-table@2.56.2) (2021-10-18)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.56.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.56.0...@ant-design/pro-table@2.56.1) (2021-10-15)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+# [2.56.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.55.0...@ant-design/pro-table@2.56.0) (2021-10-12)
+
+### Features
+
+- 工具栏-列设置-新增 slot ([#3808](https://github.com/ant-design/pro-components/issues/3808)) ([a08fff3](https://github.com/ant-design/pro-components/commit/a08fff317b516c466aab96027bda4614185ff91c))
+
+# [2.55.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.5...@ant-design/pro-table@2.55.0) (2021-10-08)
+
+### Features
+
+- **list:** add cardlist operate ([#3746](https://github.com/ant-design/pro-components/issues/3746)) ([43de757](https://github.com/ant-design/pro-components/commit/43de7577ca46b5b26acdd544cc40ec1e559a3b93))
+
+## [2.54.5](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.4...@ant-design/pro-table@2.54.5) (2021-10-08)
+
+### Bug Fixes
+
+- **field:** timePicker 组件用 moment 解析时间不填入 format 是会直接 Invalid date ([#3745](https://github.com/ant-design/pro-components/issues/3745)) ([31fc899](https://github.com/ant-design/pro-components/commit/31fc8993aa5486281c76691df41ddb80d827074a))
+
+## [2.54.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.3...@ant-design/pro-table@2.54.4) (2021-09-26)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.54.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.2...@ant-design/pro-table@2.54.3) (2021-09-24)
+
+### Bug Fixes
+
+- **table:** fix DragSortTable render problems with multiple renders ([#3705](https://github.com/ant-design/pro-components/issues/3705)) ([ec1a6c1](https://github.com/ant-design/pro-components/commit/ec1a6c150fe4cc4953c172cf7f9583eac1b54e23))
+- **table:** optimize style performance ([#3706](https://github.com/ant-design/pro-components/issues/3706)) ([df59f7e](https://github.com/ant-design/pro-components/commit/df59f7e893ba59a564d253bbd7330d4ed7da2900))
+
+## [2.54.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.1...@ant-design/pro-table@2.54.2) (2021-09-18)
+
+**Note:** Version bump only for package @ant-design/pro-table
+
+## [2.54.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.54.0...@ant-design/pro-table@2.54.1) (2021-09-18)
+
+### Bug Fixes
+
+- **utils:** use swr beta verison fix ie support ([#3697](https://github.com/ant-design/pro-components/issues/3697)) ([490bb96](https://github.com/ant-design/pro-components/commit/490bb9657285dda4b20d7c2252072baea59d7c51))
+
+# [2.54.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.53.2...@ant-design/pro-table@2.54.0) (2021-09-17)
+
+### Features
+
+- **table:** support persistence stateMap ([#3684](https://github.com/ant-design/pro-components/issues/3684)) ([fa7cf30](https://github.com/ant-design/pro-components/commit/fa7cf302762b19155329be22b1b05a6f7504fd67))
+
+## [2.53.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.53.1...@ant-design/pro-table@2.53.2) (2021-09-16)
+
+### Bug Fixes
+
+- **ProTable:** proFieldProps.proFieldKey custom key should priority over dataIndex ([#3665](https://github.com/ant-design/pro-components/issues/3665)) ([e074174](https://github.com/ant-design/pro-components/commit/e074174e84685266878ea0246c6a89db3082892c)), closes [#3658](https://github.com/ant-design/pro-components/issues/3658)
+
 ## [2.53.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-table@2.53.0...@ant-design/pro-table@2.53.1) (2021-09-10)
 
 **Note:** Version bump only for package @ant-design/pro-table

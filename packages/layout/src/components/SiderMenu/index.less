@@ -1,4 +1,5 @@
-@import '~antd/es/style/themes/default.less';
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
 @import '../../BasicLayout.less';
 
 @pro-layout-sider-menu-prefix-cls: ~'@{ant-prefix}-pro-sider';
@@ -87,14 +88,14 @@
     ::-webkit-scrollbar-track {
       background: rgba(255, 255, 255, 0.15);
       border-radius: 3px;
-      -webkit-box-shadow: inset 0 0 5px rgba(37, 37, 37, 0.05);
+      box-shadow: inset 0 0 5px rgba(37, 37, 37, 0.05);
     }
 
     /* 滚动条滑块 */
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 3px;
-      -webkit-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
     }
   }
 
@@ -134,14 +135,14 @@
       ::-webkit-scrollbar-track {
         background: rgba(0, 0, 0, 0.06);
         border-radius: 3px;
-        -webkit-box-shadow: inset 0 0 5px rgba(0, 21, 41, 0.05);
+        box-shadow: inset 0 0 5px rgba(0, 21, 41, 0.05);
       }
 
       /* 滚动条滑块 */
       ::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.12);
         border-radius: 3px;
-        -webkit-box-shadow: inset 0 0 5px rgba(0, 21, 41, 0.05);
+        box-shadow: inset 0 0 5px rgba(0, 21, 41, 0.05);
       }
     }
 

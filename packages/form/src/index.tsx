@@ -10,6 +10,7 @@ import ProFormRadio from './components/Radio';
 import ProFormSwitch from './components/Switch';
 import ProFormRate from './components/Rate';
 import ProFormSlider from './components/Slider';
+import ProFormCascader from './components/Cascader';
 import ProFormUploadDragger from './components/UploadDragger';
 import ProFormUploadButton from './components/UploadButton';
 import type { ProFormFieldProps } from './components/Field';
@@ -47,8 +48,10 @@ import './index.less';
 import { ProFormContext } from '@ant-design/pro-utils';
 import type { LightFilterFooterRender, ProFormFieldItemProps } from './interface';
 import { FormItemProvide } from './components/FormItem';
+import type { LightWrapperProps } from './BaseForm/LightWrapper';
 
 export type {
+  LightWrapperProps,
   ProFormFieldProps,
   ProFormCaptchaProps,
   BaseQueryFilterProps,
@@ -81,6 +84,7 @@ export {
   ProFormDateTimePicker,
   ProFormTimePicker,
   ProFormText,
+  ProFormCascader,
   ProFormTextArea,
   ProFormSwitch,
   ProFormField,

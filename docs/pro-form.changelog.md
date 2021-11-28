@@ -9,6 +9,78 @@ group:
 
 # Change Log
 
+## @ant-design/pro-form@1.43.5
+
+`2021-10-19`
+
+- 🐛 fix(form): ProFormSlider support number [#3849](https://github.com/ant-design/pro-components/pull/3849) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-form@1.43.4
+
+`2021-10-18`
+
+- 🐛 fix(form): ProSelect filter support filterOption [#3822](https://github.com/ant-design/pro-components/pull/3822) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-form@1.43.3
+
+`2021-10-15`
+
+- 🐛 fix(form): fix Abnormal operation of proformdependency in proform [#3839](https://github.com/ant-design/pro-components/pull/3839) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix modal and drawer reset error [#3838](https://github.com/ant-design/pro-components/pull/3838) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): 修复 ProFormList 的 children 类型错误问题并添加 action 注入 [#3835](https://github.com/ant-design/pro-components/pull/3835) [@0x219](https://github.com/0x219)
+
+## @ant-design/pro-form@1.43.0
+
+`2021-10-08`
+
+- 🐛 fix(form): fix form list preserve problem [#3766](https://github.com/ant-design/pro-components/pull/3766) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): ProFormField lightProps no work error [#3765](https://github.com/ant-design/pro-components/pull/3765) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix modal form rewrite getPopupContainer error [#3763](https://github.com/ant-design/pro-components/pull/3763) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): 修复了 formList 组件无法向外抛出 actionRef [#3744](https://github.com/ant-design/pro-components/pull/3744) [@yoke0104x](https://github.com/yoke0104x)
+- 🐛 fix(field): timePicker 组件用 moment 解析时间不填入 format 是会直接 Invalid date [#3745](https://github.com/ant-design/pro-components/pull/3745) [@rojer95](https://github.com/rojer95)
+- 💥 feat(form): form support use singer function [#3764](https://github.com/ant-design/pro-components/pull/3764) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.42.1
+
+`2021-09-26`
+
+- 🐛 fix(form): no use div ref render dom [#3739](https://github.com/ant-design/pro-components/pull/3739) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.42.0
+
+`2021-09-24`
+
+- 🐛 fix(form): drawer/modal support getContainer=false [#3727](https://github.com/ant-design/pro-components/pull/3727) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix:select unnamed cache [#3716](https://github.com/ant-design/pro-components/pull/3716) [@zitudu](https://github.com/zitudu)
+- 🐛 fix(table): optimize style performance [#3706](https://github.com/ant-design/pro-components/pull/3706) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.41.0
+
+`2021-09-17`
+
+- 💥 feat(form): support auto getPopupContainer [#3685](https://github.com/ant-design/pro-components/pull/3685) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.40.1
+
+`2021-09-16`
+
+- 🐛 fix(form): fix the problem of multiple calls [#3676](https://github.com/ant-design/pro-components/pull/3676) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix the problem of repeated prompts [#3671](https://github.com/ant-design/pro-components/pull/3671) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.40.0
+
+`2021-09-10`
+
+- 💥 feat(form): formList support function children [#3635](https://github.com/ant-design/pro-components/pull/3635) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.39.1
+
+`2021-09-09`
+
+- 🐛 fix(form): fix transform no support lableInValue [#3630](https://github.com/ant-design/pro-components/pull/3630) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): auto close KeyPress submit [#3625](https://github.com/ant-design/pro-components/pull/3625) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): 解决有 addonBefore 或 addBefore 的情况下出现双重表单校验提示的问题 [#3611](https://github.com/ant-design/pro-components/pull/3611) [@kiner-tang](https://github.com/kiner-tang)
+
 ## @ant-design/pro-form@1.39.0
 
 `2021-09-07`

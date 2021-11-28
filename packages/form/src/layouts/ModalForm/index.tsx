@@ -59,10 +59,14 @@ function ModalForm<T = Record<string, any>>({
   width,
   ...rest
 }: ModalFormProps<T>) {
+  const domRef = useRef<HTMLDivElement | null>(null);
+
   const [visible, setVisible] = useMergedState<boolean>(!!rest.visible, {
     value: rest.visible,
     onChange: onVisibleChange,
   });
+
+  const [key, setKey] = useMergedState<number>(0);
 
   const context = useContext(ConfigProvider.ConfigContext);
 
@@ -76,16 +80,19 @@ function ModalForm<T = Record<string, any>>({
       }
       return modalProps?.getContainer;
     }
+    if (modalProps?.getContainer === false) {
+      return false;
+    }
     return context?.getPopupContainer?.(document.body);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context, modalProps, visible]);
 
-  const [scrollLocker] = useState(
-    () =>
-      new ScrollLocker({
-        container: renderDom || document.body,
-      }),
-  );
+  const [scrollLocker] = useState(() => {
+    if (typeof window === 'undefined') return undefined;
+    return new ScrollLocker({
+      container: renderDom || document.body,
+    });
+  });
 
   noteOnce(
     // eslint-disable-next-line @typescript-eslint/dot-notation
@@ -102,6 +109,11 @@ function ModalForm<T = Record<string, any>>({
     if (visible && rest.visible) {
       onVisibleChange?.(true);
     }
+    // 如果打开了窗口，并且是用户设置的 visible，就触发一下重新更新
+    if (visible && rest.visible && modalProps?.destroyOnClose) {
+      setKey(key + 1);
+    }
+
     return () => {
       if (!visible) scrollLocker?.unLock?.();
     };
@@ -112,6 +124,7 @@ function ModalForm<T = Record<string, any>>({
     () => () => {
       scrollLocker?.unLock?.();
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
@@ -138,10 +151,6 @@ function ModalForm<T = Record<string, any>>({
   useEffect(() => {
     if (visible) {
       isFirstRender.current = false;
-    }
-    // 再打开的时候重新刷新，会让 initialValues 生效
-    if (visible && modalProps?.destroyOnClose) {
-      formRef.current?.resetFields();
     }
   }, [modalProps?.destroyOnClose, visible]);
 
@@ -171,55 +180,71 @@ function ModalForm<T = Record<string, any>>({
           },
         };
 
+  const formDom = (
+    <div ref={domRef} onClick={(e) => e.stopPropagation()}>
+      <BaseForm
+        key={key}
+        formComponentType="ModalForm"
+        layout="vertical"
+        {...omit(rest, ['visible'])}
+        formRef={formRef}
+        onFinish={async (values) => {
+          if (!onFinish) {
+            return;
+          }
+          const success = await onFinish(values);
+          if (success) {
+            setVisible(false);
+            setTimeout(() => {
+              if (modalProps?.destroyOnClose) formRef.current?.resetFields();
+            }, 300);
+          }
+        }}
+        submitter={renderSubmitter}
+        contentRender={(item, submitter) => {
+          return (
+            <Modal
+              title={title}
+              width={width || 800}
+              {...modalProps}
+              afterClose={() => {
+                modalProps?.afterClose?.();
+              }}
+              getContainer={false}
+              visible={visible}
+              onCancel={(e) => {
+                setVisible(false);
+                modalProps?.onCancel?.(e);
+              }}
+              footer={submitter === undefined ? null : submitter}
+            >
+              {shouldRenderFormItems ? item : null}
+            </Modal>
+          );
+        }}
+      >
+        {children}
+      </BaseForm>
+    </div>
+  );
+
+  /** 这个是为了支持 ssr */
+  const portalRenderDom = useMemo(() => {
+    if (typeof window === 'undefined') return undefined;
+    return renderDom || document.body;
+  }, [renderDom]);
+
   return (
     <>
-      {createPortal(
-        <div onClick={(e) => e.stopPropagation()}>
-          <BaseForm
-            layout="vertical"
-            {...omit(rest, ['visible'])}
-            formRef={formRef}
-            onFinish={async (values) => {
-              if (!onFinish) {
-                return;
-              }
-              const success = await onFinish(values);
-              if (success) {
-                setVisible(false);
-                setTimeout(() => {
-                  if (modalProps?.destroyOnClose) formRef.current?.resetFields();
-                }, 300);
-              }
-            }}
-            submitter={renderSubmitter}
-            contentRender={(item, submitter) => {
-              return (
-                <Modal
-                  title={title}
-                  width={width || 800}
-                  {...modalProps}
-                  getContainer={false}
-                  visible={visible}
-                  onCancel={(e) => {
-                    setVisible(false);
-                    modalProps?.onCancel?.(e);
-                  }}
-                  footer={submitter === undefined ? null : submitter}
-                >
-                  {shouldRenderFormItems ? item : null}
-                </Modal>
-              );
-            }}
-          >
-            {children}
-          </BaseForm>
-        </div>,
-        renderDom || document.body,
-      )}
+      {renderDom !== false && portalRenderDom ? createPortal(formDom, portalRenderDom) : formDom}
       {trigger &&
         React.cloneElement(trigger, {
           ...trigger.props,
-          onClick: (e: any) => {
+          onClick: async (e: any) => {
+            /** 如果打开了destroyOnClose，重制一下 form */
+            if (!visible && modalProps?.destroyOnClose) {
+              await setKey(key + 1);
+            }
             setVisible(!visible);
             trigger.props?.onClick?.(e);
           },

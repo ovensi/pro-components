@@ -2,6 +2,138 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.31.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.31.1...@ant-design/pro-layout@6.31.2) (2021-11-23)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+## [6.31.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.31.0...@ant-design/pro-layout@6.31.1) (2021-11-23)
+
+### Bug Fixes
+
+- **card:** add more var ([3caad81](https://github.com/ant-design/pro-components/commit/3caad8138bcf65c2163e72e7788c2d8fa0e3f70a))
+- **form:** default close render params to url ([cd4f0ab](https://github.com/ant-design/pro-components/commit/cd4f0abab77cc212a53f549ea16faafa70d00a15))
+- **layout:** no set topmenu font weight ([#4097](https://github.com/ant-design/pro-components/issues/4097)) ([234037f](https://github.com/ant-design/pro-components/commit/234037f80c41d28635796874953871e49dcdf61e))
+
+# [6.31.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.30.1...@ant-design/pro-layout@6.31.0) (2021-11-22)
+
+### Features
+
+- pro-layout 已支持传入 props 到 breadcrumbProps，但文档中没有体现 ([#4075](https://github.com/ant-design/pro-components/issues/4075)) ([3a60dec](https://github.com/ant-design/pro-components/commit/3a60dec2cc106a37b2d42395642e06add5ab8b55))
+
+## [6.30.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.30.0...@ant-design/pro-layout@6.30.1) (2021-11-18)
+
+### Bug Fixes
+
+- **layout:** fix style error ([973fa79](https://github.com/ant-design/pro-components/commit/973fa79759a06fefb5b19582b1f3cb9cf4464051))
+
+# [6.30.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.29.1...@ant-design/pro-layout@6.30.0) (2021-11-18)
+
+### Bug Fixes
+
+- **layout:** support more token ([#4066](https://github.com/ant-design/pro-components/issues/4066)) ([a064cae](https://github.com/ant-design/pro-components/commit/a064caeae9e0d2d99ec5574a235f5d1e2b92149c))
+
+### Features
+
+- **list:** support list.itemCardProps ([#4061](https://github.com/ant-design/pro-components/issues/4061)) ([71c0138](https://github.com/ant-design/pro-components/commit/71c013877e318129d004ea299bbc6da8c349ea35))
+
+## [6.29.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.29.0...@ant-design/pro-layout@6.29.1) (2021-11-16)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+# [6.29.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.28.1...@ant-design/pro-layout@6.29.0) (2021-11-15)
+
+### Features
+
+- **form:** support antd next ([#4038](https://github.com/ant-design/pro-components/issues/4038)) ([96a64c3](https://github.com/ant-design/pro-components/commit/96a64c35d0fc6a359a4ff3d36b96f510f4580c63)), closes [#3770](https://github.com/ant-design/pro-components/issues/3770) [#3863](https://github.com/ant-design/pro-components/issues/3863)
+
+## [6.28.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.28.0...@ant-design/pro-layout@6.28.1) (2021-11-13)
+
+### Bug Fixes
+
+- **layout:** fix splitMenus no work error ([a5e5856](https://github.com/ant-design/pro-components/commit/a5e585649a9ee9bcdd9184a73027374520d03346))
+
+# [6.28.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.27.2...@ant-design/pro-layout@6.28.0) (2021-11-12)
+
+### Bug Fixes
+
+- **form:** fix onchange rechange error ([#4022](https://github.com/ant-design/pro-components/issues/4022)) ([69b4335](https://github.com/ant-design/pro-components/commit/69b433533db8a6df71dec2de05a4a8c4e6a480fc))
+- **form:** fix proform.item no support QueryFilter error ([#4011](https://github.com/ant-design/pro-components/issues/4011)) ([5eff600](https://github.com/ant-design/pro-components/commit/5eff600f580d99452f9e1a84b7c36c315e55804f))
+- **layout:** Improve performance ([#4020](https://github.com/ant-design/pro-components/issues/4020)) ([f1f2502](https://github.com/ant-design/pro-components/commit/f1f25024589e86c3d6e0fc1efc9b1e9dd8cea534))
+
+### Features
+
+- **layout:** support remove default title ([#4013](https://github.com/ant-design/pro-components/issues/4013)) ([e0ffad0](https://github.com/ant-design/pro-components/commit/e0ffad0561a144113caab2d40cae10b7ba78bbed))
+
+## [6.27.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.27.1...@ant-design/pro-layout@6.27.2) (2021-11-02)
+
+### Bug Fixes
+
+- **list:** fix list style error ([#3943](https://github.com/ant-design/pro-components/issues/3943)) ([68e0eed](https://github.com/ant-design/pro-components/commit/68e0eede7131932eb9e16734bb5bbb3c8fa0572e))
+
+## [6.27.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.27.0...@ant-design/pro-layout@6.27.1) (2021-10-27)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+# [6.27.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.6...@ant-design/pro-layout@6.27.0) (2021-10-26)
+
+### Features
+
+- support ssr server ([69773c9](https://github.com/ant-design/pro-components/commit/69773c9dbaccd342d86312032c7b09958cdaed7c))
+
+## [6.26.6](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.5...@ant-design/pro-layout@6.26.6) (2021-10-19)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+## [6.26.5](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.4...@ant-design/pro-layout@6.26.5) (2021-10-18)
+
+### Reverts
+
+- Revert "fix(layout): 优化 PageContainer 头部和内容之间的间距 (#3812)" (#3848) ([f6d8767](https://github.com/ant-design/pro-components/commit/f6d87676d8bab6573147d83a04a3c6e23bfd9ddb)), closes [#3812](https://github.com/ant-design/pro-components/issues/3812) [#3848](https://github.com/ant-design/pro-components/issues/3848)
+
+## [6.26.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.3...@ant-design/pro-layout@6.26.4) (2021-10-15)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+## [6.26.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.2...@ant-design/pro-layout@6.26.3) (2021-10-12)
+
+### Bug Fixes
+
+- **card:** fix card ehen theme change no change color error ([#3804](https://github.com/ant-design/pro-components/issues/3804)) ([083ec08](https://github.com/ant-design/pro-components/commit/083ec08794ab555615d5eb2304c3ef2e4660e77f))
+- **layout:** 优化 PageContainer 头部和内容之间的间距 ([#3812](https://github.com/ant-design/pro-components/issues/3812)) ([9b080b1](https://github.com/ant-design/pro-components/commit/9b080b16e46fe1d96041c54a4fa0be4f6c73f94a))
+
+## [6.26.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.1...@ant-design/pro-layout@6.26.2) (2021-10-08)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+## [6.26.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.26.0...@ant-design/pro-layout@6.26.1) (2021-10-08)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+# [6.26.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.25.7...@ant-design/pro-layout@6.26.0) (2021-09-24)
+
+### Features
+
+- **layout:** PageContainer 的 loading 属性支持传输自定义元素方式自定义 loading ([#3702](https://github.com/ant-design/pro-components/issues/3702)) ([5395140](https://github.com/ant-design/pro-components/commit/5395140b9be18e360a0f84a226142c42f73ca086)), closes [#3620](https://github.com/ant-design/pro-components/issues/3620)
+
+## [6.25.7](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.25.6...@ant-design/pro-layout@6.25.7) (2021-09-18)
+
+### Bug Fixes
+
+- **utils:** use swr beta verison fix ie support ([#3697](https://github.com/ant-design/pro-components/issues/3697)) ([490bb96](https://github.com/ant-design/pro-components/commit/490bb9657285dda4b20d7c2252072baea59d7c51))
+
+## [6.25.6](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.25.5...@ant-design/pro-layout@6.25.6) (2021-09-17)
+
+### Bug Fixes
+
+- **list:** title blank placeholder of card ([#3680](https://github.com/ant-design/pro-components/issues/3680)) ([e3e383f](https://github.com/ant-design/pro-components/commit/e3e383fed07565952fea7da9b3a5af5eebc14f47))
+
+## [6.25.5](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.25.4...@ant-design/pro-layout@6.25.5) (2021-09-16)
+
+### Bug Fixes
+
+- [#3651](https://github.com/ant-design/pro-components/issues/3651) 修复金额输入组件设置 width 无效的问题 ([#3654](https://github.com/ant-design/pro-components/issues/3654)) ([ef72dba](https://github.com/ant-design/pro-components/commit/ef72dbae77a77a5831a6056d4194ac3524f7afe8))
+- **ProLayout:** headerContentRender example function. ([#3645](https://github.com/ant-design/pro-components/issues/3645)) ([5702344](https://github.com/ant-design/pro-components/commit/570234447da415dd582fb25c7257763812f9d1a5))
+
 ## [6.25.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.25.3...@ant-design/pro-layout@6.25.4) (2021-09-10)
 
 ### Bug Fixes
